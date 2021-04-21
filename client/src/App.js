@@ -30,8 +30,6 @@ const App = (props) => {
     axios
       .delete(`http://localhost:5000/api/movies/${id}`)
       .then((res) => {
-        // console.log()
-        console.log('response id:', res.data);
         const newMovies = movies.filter(movie => movie.id !== res.data);
         setMovies(newMovies);
       })
@@ -55,7 +53,7 @@ const App = (props) => {
         
           <Switch>
             <Route exact path="/movies/add">
-              <AddMovieForm />
+              <AddMovieForm setMovies={setMovies} />
             </Route>
 
             <Route path="/movies/edit/:id">
